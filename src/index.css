@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f4fbfa;
+  --card: rgba(255, 255, 255, 0.88);
+  --soft: #e9f6f4;
+  --text: #18313d;
+  --muted: #5b7583;
+  --border: rgba(54, 92, 108, 0.12);
+  --accent: #6aa4ab;
+  --accent-2: #88b7e7;
+  --accent-shadow: rgba(106, 164, 171, 0.28);
+}
+
+.dark,
+.theme-dark {
+  --bg: #0c1620;
+  --card: rgba(17, 28, 39, 0.86);
+  --soft: #152431;
+  --text: #edf5fb;
+  --muted: #9cb2c2;
+  --border: rgba(168, 196, 219, 0.16);
+  --accent: #78beb6;
+  --accent-2: #8bb9ee;
+  --accent-shadow: rgba(120, 190, 182, 0.22);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(164, 226, 214, 0.28), transparent 36%),
+    radial-gradient(circle at bottom right, rgba(154, 194, 255, 0.22), transparent 28%),
+    var(--bg);
+  color: var(--text);
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(106, 164, 171, 0.22);
+}
+
+.glass-panel {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  backdrop-filter: blur(24px);
+  border-radius: 2rem;
+  padding: 1.25rem;
+  box-shadow: 0 20px 60px rgba(17, 42, 58, 0.08);
+}
+
+.input-field {
+  width: 100%;
+  border-radius: 1.2rem;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  color: var(--text);
+  padding: 0.95rem 1rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.input-field::placeholder {
+  color: color-mix(in srgb, var(--muted) 80%, transparent);
+}
+
+.input-field:focus {
+  border-color: color-mix(in srgb, var(--accent) 60%, white);
+  box-shadow: 0 0 0 4px rgba(106, 164, 171, 0.14);
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 1.15rem;
+  padding: 0.95rem 1.15rem;
+  font-weight: 600;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  box-shadow: 0 18px 40px var(--accent-shadow);
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  transform: translateY(-1px);
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+}
+
+.secondary-button {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--card) 92%, transparent);
+  color: var(--text);
+}
+
+.balloon-stage {
+  position: relative;
+}
+
+.balloon-float {
+  animation: floatUp 7s ease-in infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(120%) rotate(-6deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10%) rotate(4deg);
+  }
+  100% {
+    transform: translateY(-145%) rotate(-3deg);
+    opacity: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(106, 164, 171, 0.34);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
